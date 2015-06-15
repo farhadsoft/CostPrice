@@ -1,0 +1,195 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="MobileCenter.Admin" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <!-- Meta-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Farhad Mammadov" />
+    <title></title>
+    <link rel="shortcut icon" href="~/icons/icon.ico" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="app/css/bootstrap.css" />
+    <!-- Vendor CSS-->
+    <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="vendor/animo/animate+animo.css" />
+    <link rel="stylesheet" href="vendor/csspinner/csspinner.min.css" />
+    <!-- START Page Custom CSS-->
+    <!-- Data Table styles-->
+    <link rel="stylesheet" href="vendor/datatable/extensions/datatable-bootstrap/css/dataTables.bootstrap.css" />
+    <link rel="stylesheet" href="vendor/datatable/extensions/ColVis/css/dataTables.colVis.css" />
+    <!-- END Page Custom CSS-->
+    <!-- App CSS-->
+    <link rel="stylesheet" href="app/css/app.css" />
+    <!-- Modernizr JS Script-->
+    <script src="vendor/modernizr/modernizr.js" type="application/javascript"></script>
+    <!-- FastClick for mobiles-->
+    <script src="vendor/fastclick/fastclick.js" type="application/javascript"></script>
+</head>
+
+<body>
+    <!-- START Main wrapper-->
+    <section id="Section1" class="wrapper" runat="server">
+        <!-- START Top Navbar-->
+               <nav role="navigation" class="navbar navbar-default navbar-top navbar-fixed-top" style="width: 0px;">
+            <!-- START navbar header-->
+            <div class="navbar-header">
+                                <!-- END Left navbar-->
+                  <% if (Session["UserType"] != null)
+                     { %>
+                <!-- START Right Navbar-->
+                <ul class="nav navbar-nav navbar-right" style="position: absolute;right: 15px;">
+                    <!-- START User menu-->
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" data-play="bounceIn" class="dropdown-toggle">
+                            <em class="fa fa-user"></em>
+                        </a>
+                        <!-- START Dropdown menu-->
+                        <ul class="dropdown-menu">
+                            <li><a href="Default.aspx">Profile</a>
+                            </li>
+                            <li><a href="#">Settings</a>
+                            </li>
+                            <li><a href="LogOut.aspx">Logout</a>
+                            </li>
+                        </ul>
+                        <!-- END Dropdown menu-->
+                    </li>
+                    <!-- END User menu-->
+                </ul>
+                <!-- END Right Navbar-->
+                <% }
+                     else
+                     {%>
+                           <!-- START Right Navbar-->
+                <ul class="nav navbar-nav navbar-right"  style="position: absolute;right: 15px;">
+                    <!-- START User menu-->
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" data-play="bounceIn" class="dropdown-toggle">
+                            <em class="fa fa-user"></em>
+                        </a>
+                        <!-- START Dropdown menu-->
+                        <ul class="dropdown-menu">
+                            <li><a href="Login.aspx">Login</a>
+                            </li>
+                            <li><a href="Registration.aspx">Sign Up</a>
+                            </li>
+                        </ul>
+                        <!-- END Dropdown menu-->
+                    </li>
+                    <!-- END User menu-->
+                </ul>
+                <!-- END Right Navbar-->
+                      <%} %>
+                <a href="#" class="navbar-brand">
+                    <div class="brand-logo">CostPrice.today</div>
+                    <div class="brand-logo-collapsed">C P</div>
+                </a>
+                     <a href="javascript:void(0);" data-toggle="aside"  style="position:absolute;left:8px;color: #fff;">
+                            <em class="fa fa-align-left"></em>
+                        </a>
+            </div>
+            <!-- END navbar header-->
+            <!-- START Nav wrapper-->
+
+        </nav>
+        <!-- END Top Navbar-->
+        <!-- START aside-->
+        <aside class="aside">
+            <!-- START Sidebar (left)-->
+            <nav class="sidebar">
+                <ul class="nav">
+                    <!-- START user info-->
+                    <li>
+                        <div data-toggle="collapse-next" class="item user-block">
+                            <!-- User picture-->
+                            <div class="user-block-picture">
+                                <img src="app/img/user/no-pic.jpg" alt="Avatar" class="img-thumbnail img-circle" />
+                                <!-- Status when collapsed-->
+                                <div class="user-block-status">
+                                    <div class="point point-success point-lg"></div>
+                                </div>
+                            </div>
+                            <!-- Name and Role-->
+                            <div class="user-block-info">
+                                <span class="user-block-name item-text">Welcome, <%=Session["Name"] %></span>
+                                <span class="user-block-role"><%=Session["Company"] %></span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- END user info-->
+                    <!-- START Menu-->
+                    <li id="adminPage" runat="server">
+                        <a href="AdminPanel.aspx" title="Dashboard" data-toggle="" class="no-submenu">
+                            <em class="fa fa-dashboard"></em>
+                            <div class="label label-primary pull-right"></div>
+                            <span class="item-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li id="userPage" runat="server">
+                        <a href="UserControl.aspx" title="Users Control" data-toggle="" class="no-submenu">
+                            <em class="fa fa-bar-chart-o"></em>
+                            <span class="item-text">Users Control</span>
+                        </a>
+                    </li>
+                    <li id="productPage" runat="server">
+                        <a href="ProductControl.aspx" title="Products List" data-toggle="" class="no-submenu">
+                            <em class="fa fa-table"></em>
+                            <span class="item-text">Products List</span>
+                        </a>
+                    </li>
+                    <li id="defaultPage" runat="server">
+                        <a href="Default.aspx" title="Home Page" data-toggle="" class="no-submenu">
+                            <em class="fa fa-home"></em>
+                            <span class="item-text">Home Page</span>
+                        </a>
+                    </li>
+                    <!-- END Menu-->
+                    <!-- Sidebar footer    -->
+                    <li class="nav-footer">
+                        <div class="nav-footer-divider"></div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- END Sidebar (left)-->
+        </aside>
+        <!-- End aside-->
+        <!-- START Main section-->
+        <section>
+            <asp:ContentPlaceHolder ID="cphContent" runat="server" />
+        </section>
+        <!-- END Main section-->
+    </section>
+    <!-- END Main wrapper-->
+    <!-- START Scripts-->
+    <!-- Main vendor Scripts-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Plugins-->
+    <script src="vendor/chosen/chosen.jquery.min.js"></script>
+    <script src="vendor/slider/js/bootstrap-slider.js"></script>
+    <script src="vendor/filestyle/bootstrap-filestyle.min.js"></script>
+    <!-- Animo-->
+    <script src="vendor/animo/animo.min.js"></script>
+    <!-- Sparklines-->
+    <script src="vendor/sparklines/jquery.sparkline.min.js"></script>
+    <!-- Slimscroll-->
+    <script src="vendor/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- START Page Custom Script-->
+    <!-- Data Table Scripts-->
+    <script src="vendor/datatable/media/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatable/extensions/datatable-bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="vendor/datatable/extensions/datatable-bootstrap/js/dataTables.bootstrapPagination.js"></script>
+    <script src="vendor/datatable/extensions/ColVis/js/dataTables.colVis.min.js"></script>
+    <!-- END Page Custom Script-->
+    <!-- App Main-->
+    <script src="app/js/app.js"></script>
+    <!-- END Scripts-->
+</body>
+</html>

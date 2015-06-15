@@ -1,0 +1,1498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CostPriceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand" Type="varchar(max)" Nullable="false" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CostPrice.dbo.Color' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="BrendID" />
+            <PropertyRef Name="ModelID" />
+            <PropertyRef Name="Color" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrendID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColorsName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CostPrice.dbo.Country' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="iso" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="nicename" />
+            <PropertyRef Name="phonecode" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iso" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nicename" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="iso3" Type="char" MaxLength="3" />
+          <Property Name="numcode" Type="smallint" />
+          <Property Name="phonecode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cpu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CpuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <EntityType Name="CpuModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CpuModelName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CpuId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DVDRW">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DVDRWName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <EntityType Name="HDD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HDDName" Type="nchar" MaxLength="50" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectId" Type="nchar" MaxLength="10" />
+          <Property Name="ImageName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsApprove" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Keyboard">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyboardName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CostPrice.dbo.Model' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="Model" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <EntityType Name="OS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OSName" Type="nchar" MaxLength="50" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <EntityType Name="PriceList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="productId" Type="int" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="stock" Type="int" />
+          <Property Name="updateTime" Type="datetime" Nullable="false" />
+          <Property Name="c_cpu" Type="int" />
+          <Property Name="c_colors" Type="int" />
+          <Property Name="c_keybord" Type="int" />
+          <Property Name="c_screen" Type="int" />
+          <Property Name="c_status" Type="int" />
+          <Property Name="product_cat" Type="int" />
+          <Property Name="name" Type="nchar" MaxLength="50" />
+          <Property Name="r_ram" Type="nchar" MaxLength="10" />
+          <Property Name="r_hdd" Type="nchar" MaxLength="10" />
+          <Property Name="r_vga" Type="nchar" MaxLength="10" />
+          <Property Name="r_istouchscreen" Type="bit" />
+          <Property Name="r_isdvd" Type="bit" />
+          <Property Name="r_isbacklit" Type="bit" />
+          <Property Name="r_os" Type="int" />
+          <Property Name="c_dvd" Type="int" />
+          <Property Name="product_name" Type="nchar" MaxLength="50" />
+          <Property Name="r_brand" Type="int" />
+          <Property Name="c_cpumodel" Type="int" />
+          <Property Name="c_ramid" Type="int" />
+          <Property Name="c_hdd" Type="int" />
+          <Property Name="c_vga" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CostPrice.dbo.ProductQuery' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProductQuery">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Brand" />
+            <PropertyRef Name="Model" />
+            <PropertyRef Name="Pcs" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand" Type="varchar(max)" Nullable="false" />
+          <Property Name="Model" Type="varchar(max)" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="50" />
+          <Property Name="Size" Type="varchar" MaxLength="50" />
+          <Property Name="Pcs" Type="int" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="RAM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RAMName" Type="nchar" MaxLength="100" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <EntityType Name="Screen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScreenName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsTouchScreen" Type="bit" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CostPrice.dbo.Size' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="BrendID" />
+            <PropertyRef Name="ModelID" />
+            <PropertyRef Name="Size" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrendID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="Size" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="company" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="location" Type="nvarchar(max)" />
+          <Property Name="mobileNum1" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobileNum2" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobileNum3" Type="nvarchar" MaxLength="50" />
+          <Property Name="officeNum1" Type="nvarchar" MaxLength="50" />
+          <Property Name="officeNum2" Type="nvarchar" MaxLength="50" />
+          <Property Name="workingTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="website" Type="nvarchar" MaxLength="50" />
+          <Property Name="skype" Type="nvarchar" MaxLength="50" />
+          <Property Name="contactEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="speakingLang" Type="nvarchar" MaxLength="50" />
+          <Property Name="aboutUs" Type="nvarchar(max)" />
+          <Property Name="userType" Type="int" Nullable="false" />
+          <Property Name="country" Type="nchar" MaxLength="10" />
+          <Property Name="enable" Type="bit" Nullable="false" />
+          <Property Name="regdate" Type="datetime" />
+          <Property Name="lastvisit" Type="datetime" />
+          <Property Name="lastupdatepricelist" Type="datetime" />
+          <Property Name="key" Type="nvarchar" MaxLength="50" />
+          <Property Name="showpricelistusertype" Type="int" />
+          <Property Name="longit" Type="nvarchar" MaxLength="50" />
+          <Property Name="lotit" Type="nvarchar" MaxLength="50" />
+          <Property Name="from1H" Type="nvarchar" MaxLength="100" />
+          <Property Name="to1H" Type="nvarchar" MaxLength="100" />
+          <Property Name="from2H" Type="nvarchar" MaxLength="100" />
+          <Property Name="to2H" Type="nvarchar" MaxLength="100" />
+          <Property Name="workdays" Type="nvarchar" MaxLength="1000" />
+          <Property Name="fax" Type="nchar" MaxLength="50" />
+          <Property Name="pobox" Type="nchar" MaxLength="50" />
+          <Property Name="aboutcompany" Type="nchar" MaxLength="1500" />
+          <Property Name="showcontact" Type="bit" Nullable="false" />
+          <Property Name="showpricelistusertypes" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CostPrice.dbo.UserType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="TypeName" />
+          </Key>
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VGA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VgaName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="CatID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VgaModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VgaModelName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="VgaId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CpuModels_Cpu">
+          <End Role="Cpu" Type="Self.Cpu" Multiplicity="1" />
+          <End Role="CpuModels" Type="Self.CpuModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cpu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpuModels">
+              <PropertyRef Name="CpuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="r_brand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_colors" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_CpuModels">
+          <End Role="CpuModels" Type="Self.CpuModels" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpuModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_cpumodel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_DVDRW">
+          <End Role="DVDRW" Type="Self.DVDRW" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DVDRW">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_dvd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_HDD">
+          <End Role="HDD" Type="Self.HDD" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HDD">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_hdd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Keyboard">
+          <End Role="Keyboard" Type="Self.Keyboard" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Keyboard">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_keybord" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_OS">
+          <End Role="OS" Type="Self.OS" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="r_os" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_ProductName">
+          <End Role="ProductName" Type="Self.ProductName" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_RAM">
+          <End Role="RAM" Type="Self.RAM" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RAM">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_ramid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Screen">
+          <End Role="Screen" Type="Self.Screen" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Screen">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_screen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_VgaModels">
+          <End Role="VgaModels" Type="Self.VgaModels" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VgaModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_vga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductName_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="ProductName" Type="Self.ProductName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductName">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VgaModels_VGA">
+          <End Role="VGA" Type="Self.VGA" Multiplicity="1" />
+          <End Role="VgaModels" Type="Self.VgaModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VGA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VgaModels">
+              <PropertyRef Name="VgaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CostPriceModelStoreContainer">
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cpu" EntityType="Self.Cpu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CpuModels" EntityType="Self.CpuModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DVDRW" EntityType="Self.DVDRW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HDD" EntityType="Self.HDD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Keyboard" EntityType="Self.Keyboard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OS" EntityType="Self.OS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceList" EntityType="Self.PriceList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductName" EntityType="Self.ProductName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RAM" EntityType="Self.RAM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Screen" EntityType="Self.Screen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VGA" EntityType="Self.VGA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VgaModels" EntityType="Self.VgaModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Color" EntityType="Self.Color" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Color].[id] AS [id], 
+[Color].[BrendID] AS [BrendID], 
+[Color].[ModelID] AS [ModelID], 
+[Color].[Color] AS [Color]
+FROM [dbo].[Color] AS [Color]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Country" EntityType="Self.Country" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Country].[id] AS [id], 
+[Country].[iso] AS [iso], 
+[Country].[name] AS [name], 
+[Country].[nicename] AS [nicename], 
+[Country].[iso3] AS [iso3], 
+[Country].[numcode] AS [numcode], 
+[Country].[phonecode] AS [phonecode]
+FROM [dbo].[Country] AS [Country]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Model" EntityType="Self.Model" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Model].[id] AS [id], 
+[Model].[BrandID] AS [BrandID], 
+[Model].[Model] AS [Model], 
+[Model].[CatID] AS [CatID]
+FROM [dbo].[Model] AS [Model]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProductQuery" EntityType="Self.ProductQuery" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ProductQuery].[id] AS [id], 
+[ProductQuery].[Brand] AS [Brand], 
+[ProductQuery].[Model] AS [Model], 
+[ProductQuery].[Color] AS [Color], 
+[ProductQuery].[Size] AS [Size], 
+[ProductQuery].[Pcs] AS [Pcs], 
+[ProductQuery].[Time] AS [Time], 
+[ProductQuery].[UserID] AS [UserID], 
+[ProductQuery].[Comment] AS [Comment]
+FROM [dbo].[ProductQuery] AS [ProductQuery]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Size" EntityType="Self.Size" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Size].[id] AS [id], 
+[Size].[BrendID] AS [BrendID], 
+[Size].[ModelID] AS [ModelID], 
+[Size].[Size] AS [Size]
+FROM [dbo].[Size] AS [Size]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserType" EntityType="Self.UserType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[UserType].[TypeId] AS [TypeId], 
+[UserType].[TypeName] AS [TypeName]
+FROM [dbo].[UserType] AS [UserType]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CpuModels_Cpu" Association="Self.FK_CpuModels_Cpu">
+            <End Role="Cpu" EntitySet="Cpu" />
+            <End Role="CpuModels" EntitySet="CpuModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Brands" Association="Self.FK_PriceList_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Colors" Association="Self.FK_PriceList_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_CpuModels" Association="Self.FK_PriceList_CpuModels">
+            <End Role="CpuModels" EntitySet="CpuModels" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_DVDRW" Association="Self.FK_PriceList_DVDRW">
+            <End Role="DVDRW" EntitySet="DVDRW" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_HDD" Association="Self.FK_PriceList_HDD">
+            <End Role="HDD" EntitySet="HDD" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Keyboard" Association="Self.FK_PriceList_Keyboard">
+            <End Role="Keyboard" EntitySet="Keyboard" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_OS" Association="Self.FK_PriceList_OS">
+            <End Role="OS" EntitySet="OS" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_ProductName" Association="Self.FK_PriceList_ProductName">
+            <End Role="ProductName" EntitySet="ProductName" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_RAM" Association="Self.FK_PriceList_RAM">
+            <End Role="RAM" EntitySet="RAM" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Screen" Association="Self.FK_PriceList_Screen">
+            <End Role="Screen" EntitySet="Screen" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Status" Association="Self.FK_PriceList_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_VgaModels" Association="Self.FK_PriceList_VgaModels">
+            <End Role="VgaModels" EntitySet="VgaModels" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductName_Brands" Association="Self.FK_ProductName_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="ProductName" EntitySet="ProductName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VgaModels_VGA" Association="Self.FK_VgaModels_VGA">
+            <End Role="VGA" EntitySet="VGA" />
+            <End Role="VgaModels" EntitySet="VgaModels" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CostPriceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_Brands" FromRole="Brands" ToRole="PriceList" />
+          <NavigationProperty Name="ProductName" Relationship="Self.FK_ProductName_Brands" FromRole="Brands" ToRole="ProductName" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColorsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_Colors" FromRole="Colors" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="Cpu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CpuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="CpuModels" Relationship="Self.FK_CpuModels_Cpu" FromRole="Cpu" ToRole="CpuModels" />
+        </EntityType>
+        <EntityType Name="CpuModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CpuModelName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CpuId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cpu" Relationship="Self.FK_CpuModels_Cpu" FromRole="CpuModels" ToRole="Cpu" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_CpuModels" FromRole="CpuModels" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="DVDRW">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DVDRWName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_DVDRW" FromRole="DVDRW" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="HDD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HDDName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_HDD" FromRole="HDD" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IsApprove" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Keyboard">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyboardName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_Keyboard" FromRole="Keyboard" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="OS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OSName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_OS" FromRole="OS" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="PriceList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="productId" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="c_cpu" Type="Int32" />
+          <Property Name="c_colors" Type="Int32" />
+          <Property Name="c_keybord" Type="Int32" />
+          <Property Name="c_screen" Type="Int32" />
+          <Property Name="c_status" Type="Int32" />
+          <Property Name="product_cat" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="r_ram" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="r_hdd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="r_vga" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="r_istouchscreen" Type="Boolean" />
+          <Property Name="r_isdvd" Type="Boolean" />
+          <Property Name="r_isbacklit" Type="Boolean" />
+          <Property Name="r_os" Type="Int32" />
+          <Property Name="c_dvd" Type="Int32" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="r_brand" Type="Int32" />
+          <Property Name="c_cpumodel" Type="Int32" />
+          <Property Name="c_ramid" Type="Int32" />
+          <Property Name="c_hdd" Type="Int32" />
+          <Property Name="c_vga" Type="Int32" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK_PriceList_Brands" FromRole="PriceList" ToRole="Brands" />
+          <NavigationProperty Name="Colors" Relationship="Self.FK_PriceList_Colors" FromRole="PriceList" ToRole="Colors" />
+          <NavigationProperty Name="CpuModels" Relationship="Self.FK_PriceList_CpuModels" FromRole="PriceList" ToRole="CpuModels" />
+          <NavigationProperty Name="DVDRW" Relationship="Self.FK_PriceList_DVDRW" FromRole="PriceList" ToRole="DVDRW" />
+          <NavigationProperty Name="HDD" Relationship="Self.FK_PriceList_HDD" FromRole="PriceList" ToRole="HDD" />
+          <NavigationProperty Name="Keyboard" Relationship="Self.FK_PriceList_Keyboard" FromRole="PriceList" ToRole="Keyboard" />
+          <NavigationProperty Name="OS" Relationship="Self.FK_PriceList_OS" FromRole="PriceList" ToRole="OS" />
+          <NavigationProperty Name="ProductName" Relationship="Self.FK_PriceList_ProductName" FromRole="PriceList" ToRole="ProductName" />
+          <NavigationProperty Name="RAM" Relationship="Self.FK_PriceList_RAM" FromRole="PriceList" ToRole="RAM" />
+          <NavigationProperty Name="Screen" Relationship="Self.FK_PriceList_Screen" FromRole="PriceList" ToRole="Screen" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_PriceList_Status" FromRole="PriceList" ToRole="Status" />
+          <NavigationProperty Name="VgaModels" Relationship="Self.FK_PriceList_VgaModels" FromRole="PriceList" ToRole="VgaModels" />
+        </EntityType>
+        <EntityType Name="ProductName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK_ProductName_Brands" FromRole="ProductName" ToRole="Brands" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_ProductName" FromRole="ProductName" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="RAM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RAMName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_RAM" FromRole="RAM" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="Screen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScreenName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsTouchScreen" Type="Boolean" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_Screen" FromRole="Screen" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_Status" FromRole="Status" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mobileNum1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mobileNum2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mobileNum3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="officeNum1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="officeNum2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="workingTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="skype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="speakingLang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aboutUs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="userType" Type="Int32" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="enable" Type="Boolean" Nullable="false" />
+          <Property Name="regdate" Type="DateTime" Precision="3" />
+          <Property Name="lastvisit" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatepricelist" Type="DateTime" Precision="3" />
+          <Property Name="key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="showpricelistusertype" Type="Int32" />
+          <Property Name="longit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lotit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="from1H" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="to1H" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="from2H" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="to2H" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="workdays" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="pobox" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="aboutcompany" Type="String" MaxLength="1500" FixedLength="true" Unicode="true" />
+          <Property Name="showcontact" Type="Boolean" Nullable="false" />
+          <Property Name="showpricelistusertypes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VGA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VgaName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CatID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VgaModels" Relationship="Self.FK_VgaModels_VGA" FromRole="VGA" ToRole="VgaModels" />
+        </EntityType>
+        <EntityType Name="VgaModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VgaModelName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="VgaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PriceList" Relationship="Self.FK_PriceList_VgaModels" FromRole="VgaModels" ToRole="PriceList" />
+          <NavigationProperty Name="VGA" Relationship="Self.FK_VgaModels_VGA" FromRole="VgaModels" ToRole="VGA" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="BrendID" />
+            <PropertyRef Name="ModelID" />
+            <PropertyRef Name="Color1" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrendID" Type="Int32" Nullable="false" />
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="Color1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="iso" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="nicename" />
+            <PropertyRef Name="phonecode" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iso" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nicename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="iso3" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="numcode" Type="Int16" />
+          <Property Name="phonecode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="BrandID" />
+            <PropertyRef Name="Model1" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="Model1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CatID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProductQuery">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Brand" />
+            <PropertyRef Name="Model" />
+            <PropertyRef Name="Pcs" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pcs" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="BrendID" />
+            <PropertyRef Name="ModelID" />
+            <PropertyRef Name="Size1" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrendID" Type="Int32" Nullable="false" />
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="Size1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="TypeName" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PriceList_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="r_brand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductName_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="ProductName" Type="Self.ProductName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductName">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Colors">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_colors" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CpuModels_Cpu">
+          <End Role="Cpu" Type="Self.Cpu" Multiplicity="1" />
+          <End Role="CpuModels" Type="Self.CpuModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cpu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CpuModels">
+              <PropertyRef Name="CpuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_CpuModels">
+          <End Role="CpuModels" Type="Self.CpuModels" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CpuModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_cpumodel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_DVDRW">
+          <End Role="DVDRW" Type="Self.DVDRW" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DVDRW">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_dvd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_HDD">
+          <End Role="HDD" Type="Self.HDD" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HDD">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_hdd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Keyboard">
+          <End Role="Keyboard" Type="Self.Keyboard" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Keyboard">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_keybord" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_OS">
+          <End Role="OS" Type="Self.OS" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="r_os" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_ProductName">
+          <End Role="ProductName" Type="Self.ProductName" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_RAM">
+          <End Role="RAM" Type="Self.RAM" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RAM">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_ramid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Screen">
+          <End Role="Screen" Type="Self.Screen" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Screen">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_screen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceList_VgaModels">
+          <End Role="VgaModels" Type="Self.VgaModels" Multiplicity="0..1" />
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VgaModels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="c_vga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VgaModels_VGA">
+          <End Role="VGA" Type="Self.VGA" Multiplicity="1" />
+          <End Role="VgaModels" Type="Self.VgaModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VGA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VgaModels">
+              <PropertyRef Name="VgaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CostPriceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="Self.Brands" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" />
+          <EntitySet Name="Cpu" EntityType="Self.Cpu" />
+          <EntitySet Name="CpuModels" EntityType="Self.CpuModels" />
+          <EntitySet Name="DVDRW" EntityType="Self.DVDRW" />
+          <EntitySet Name="HDD" EntityType="Self.HDD" />
+          <EntitySet Name="Images" EntityType="Self.Images" />
+          <EntitySet Name="Keyboard" EntityType="Self.Keyboard" />
+          <EntitySet Name="OS" EntityType="Self.OS" />
+          <EntitySet Name="PriceList" EntityType="Self.PriceList" />
+          <EntitySet Name="ProductName" EntityType="Self.ProductName" />
+          <EntitySet Name="RAM" EntityType="Self.RAM" />
+          <EntitySet Name="Screen" EntityType="Self.Screen" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="VGA" EntityType="Self.VGA" />
+          <EntitySet Name="VgaModels" EntityType="Self.VgaModels" />
+          <EntitySet Name="Color" EntityType="Self.Color" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Model" EntityType="Self.Model" />
+          <EntitySet Name="ProductQuery" EntityType="Self.ProductQuery" />
+          <EntitySet Name="Size" EntityType="Self.Size" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" />
+          <AssociationSet Name="FK_PriceList_Brands" Association="Self.FK_PriceList_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductName_Brands" Association="Self.FK_ProductName_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="ProductName" EntitySet="ProductName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Colors" Association="Self.FK_PriceList_Colors">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CpuModels_Cpu" Association="Self.FK_CpuModels_Cpu">
+            <End Role="Cpu" EntitySet="Cpu" />
+            <End Role="CpuModels" EntitySet="CpuModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_CpuModels" Association="Self.FK_PriceList_CpuModels">
+            <End Role="CpuModels" EntitySet="CpuModels" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_DVDRW" Association="Self.FK_PriceList_DVDRW">
+            <End Role="DVDRW" EntitySet="DVDRW" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_HDD" Association="Self.FK_PriceList_HDD">
+            <End Role="HDD" EntitySet="HDD" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Keyboard" Association="Self.FK_PriceList_Keyboard">
+            <End Role="Keyboard" EntitySet="Keyboard" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_OS" Association="Self.FK_PriceList_OS">
+            <End Role="OS" EntitySet="OS" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_ProductName" Association="Self.FK_PriceList_ProductName">
+            <End Role="ProductName" EntitySet="ProductName" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_RAM" Association="Self.FK_PriceList_RAM">
+            <End Role="RAM" EntitySet="RAM" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Screen" Association="Self.FK_PriceList_Screen">
+            <End Role="Screen" EntitySet="Screen" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_Status" Association="Self.FK_PriceList_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceList_VgaModels" Association="Self.FK_PriceList_VgaModels">
+            <End Role="VgaModels" EntitySet="VgaModels" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VgaModels_VGA" Association="Self.FK_VgaModels_VGA">
+            <End Role="VGA" EntitySet="VGA" />
+            <End Role="VgaModels" EntitySet="VgaModels" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CostPriceModelStoreContainer" CdmEntityContainer="CostPriceEntities">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="CostPriceModel.Brands">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="CostPriceModel.Colors">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ColorsName" ColumnName="ColorsName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cpu">
+            <EntityTypeMapping TypeName="CostPriceModel.Cpu">
+              <MappingFragment StoreEntitySet="Cpu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CpuName" ColumnName="CpuName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CpuModels">
+            <EntityTypeMapping TypeName="CostPriceModel.CpuModels">
+              <MappingFragment StoreEntitySet="CpuModels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CpuModelName" ColumnName="CpuModelName" />
+                <ScalarProperty Name="CpuId" ColumnName="CpuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DVDRW">
+            <EntityTypeMapping TypeName="CostPriceModel.DVDRW">
+              <MappingFragment StoreEntitySet="DVDRW">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DVDRWName" ColumnName="DVDRWName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HDD">
+            <EntityTypeMapping TypeName="CostPriceModel.HDD">
+              <MappingFragment StoreEntitySet="HDD">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HDDName" ColumnName="HDDName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="CostPriceModel.Images">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="IsApprove" ColumnName="IsApprove" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Keyboard">
+            <EntityTypeMapping TypeName="CostPriceModel.Keyboard">
+              <MappingFragment StoreEntitySet="Keyboard">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="KeyboardName" ColumnName="KeyboardName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OS">
+            <EntityTypeMapping TypeName="CostPriceModel.OS">
+              <MappingFragment StoreEntitySet="OS">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="OSName" ColumnName="OSName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceList">
+            <EntityTypeMapping TypeName="CostPriceModel.PriceList">
+              <MappingFragment StoreEntitySet="PriceList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+                <ScalarProperty Name="c_cpu" ColumnName="c_cpu" />
+                <ScalarProperty Name="c_colors" ColumnName="c_colors" />
+                <ScalarProperty Name="c_keybord" ColumnName="c_keybord" />
+                <ScalarProperty Name="c_screen" ColumnName="c_screen" />
+                <ScalarProperty Name="c_status" ColumnName="c_status" />
+                <ScalarProperty Name="product_cat" ColumnName="product_cat" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="r_ram" ColumnName="r_ram" />
+                <ScalarProperty Name="r_hdd" ColumnName="r_hdd" />
+                <ScalarProperty Name="r_vga" ColumnName="r_vga" />
+                <ScalarProperty Name="r_istouchscreen" ColumnName="r_istouchscreen" />
+                <ScalarProperty Name="r_isdvd" ColumnName="r_isdvd" />
+                <ScalarProperty Name="r_isbacklit" ColumnName="r_isbacklit" />
+                <ScalarProperty Name="r_os" ColumnName="r_os" />
+                <ScalarProperty Name="c_dvd" ColumnName="c_dvd" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="r_brand" ColumnName="r_brand" />
+                <ScalarProperty Name="c_cpumodel" ColumnName="c_cpumodel" />
+                <ScalarProperty Name="c_ramid" ColumnName="c_ramid" />
+                <ScalarProperty Name="c_hdd" ColumnName="c_hdd" />
+                <ScalarProperty Name="c_vga" ColumnName="c_vga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductName">
+            <EntityTypeMapping TypeName="CostPriceModel.ProductName">
+              <MappingFragment StoreEntitySet="ProductName">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RAM">
+            <EntityTypeMapping TypeName="CostPriceModel.RAM">
+              <MappingFragment StoreEntitySet="RAM">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RAMName" ColumnName="RAMName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Screen">
+            <EntityTypeMapping TypeName="CostPriceModel.Screen">
+              <MappingFragment StoreEntitySet="Screen">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ScreenName" ColumnName="ScreenName" />
+                <ScalarProperty Name="IsTouchScreen" ColumnName="IsTouchScreen" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="CostPriceModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CostPriceModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="mobileNum1" ColumnName="mobileNum1" />
+                <ScalarProperty Name="mobileNum2" ColumnName="mobileNum2" />
+                <ScalarProperty Name="mobileNum3" ColumnName="mobileNum3" />
+                <ScalarProperty Name="officeNum1" ColumnName="officeNum1" />
+                <ScalarProperty Name="officeNum2" ColumnName="officeNum2" />
+                <ScalarProperty Name="workingTime" ColumnName="workingTime" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="skype" ColumnName="skype" />
+                <ScalarProperty Name="contactEmail" ColumnName="contactEmail" />
+                <ScalarProperty Name="speakingLang" ColumnName="speakingLang" />
+                <ScalarProperty Name="aboutUs" ColumnName="aboutUs" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+                <ScalarProperty Name="lastvisit" ColumnName="lastvisit" />
+                <ScalarProperty Name="lastupdatepricelist" ColumnName="lastupdatepricelist" />
+                <ScalarProperty Name="key" ColumnName="key" />
+                <ScalarProperty Name="showpricelistusertype" ColumnName="showpricelistusertype" />
+                <ScalarProperty Name="longit" ColumnName="longit" />
+                <ScalarProperty Name="lotit" ColumnName="lotit" />
+                <ScalarProperty Name="from1H" ColumnName="from1H" />
+                <ScalarProperty Name="to1H" ColumnName="to1H" />
+                <ScalarProperty Name="from2H" ColumnName="from2H" />
+                <ScalarProperty Name="to2H" ColumnName="to2H" />
+                <ScalarProperty Name="workdays" ColumnName="workdays" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="pobox" ColumnName="pobox" />
+                <ScalarProperty Name="aboutcompany" ColumnName="aboutcompany" />
+                <ScalarProperty Name="showcontact" ColumnName="showcontact" />
+                <ScalarProperty Name="showpricelistusertypes" ColumnName="showpricelistusertypes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VGA">
+            <EntityTypeMapping TypeName="CostPriceModel.VGA">
+              <MappingFragment StoreEntitySet="VGA">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VgaName" ColumnName="VgaName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VgaModels">
+            <EntityTypeMapping TypeName="CostPriceModel.VgaModels">
+              <MappingFragment StoreEntitySet="VgaModels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VgaModelName" ColumnName="VgaModelName" />
+                <ScalarProperty Name="VgaId" ColumnName="VgaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Color">
+            <EntityTypeMapping TypeName="CostPriceModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BrendID" ColumnName="BrendID" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="Color1" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="CostPriceModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="iso" ColumnName="iso" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="nicename" ColumnName="nicename" />
+                <ScalarProperty Name="iso3" ColumnName="iso3" />
+                <ScalarProperty Name="numcode" ColumnName="numcode" />
+                <ScalarProperty Name="phonecode" ColumnName="phonecode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Model">
+            <EntityTypeMapping TypeName="CostPriceModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Model1" ColumnName="Model" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductQuery">
+            <EntityTypeMapping TypeName="CostPriceModel.ProductQuery">
+              <MappingFragment StoreEntitySet="ProductQuery">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Size">
+            <EntityTypeMapping TypeName="CostPriceModel.Size">
+              <MappingFragment StoreEntitySet="Size">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BrendID" ColumnName="BrendID" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="Size1" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserType">
+            <EntityTypeMapping TypeName="CostPriceModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cdc82e46918646b0848d7a68fa2e14d4" Name="Diagram1">
+        <EntityTypeShape EntityType="CostPriceModel.Brands" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Colors" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Cpu" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.CpuModels" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.DVDRW" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.HDD" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Images" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Keyboard" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.OS" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.PriceList" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.ProductName" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.RAM" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Screen" Width="1.5" PointX="3" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Status" Width="1.5" PointX="3" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Users" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.VGA" Width="1.5" PointX="0.75" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.VgaModels" Width="1.5" PointX="3" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Color" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Country" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Model" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.ProductQuery" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.Size" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostPriceModel.UserType" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_Brands" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_ProductName_Brands" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_Colors" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_CpuModels_Cpu" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_CpuModels" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_DVDRW" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_HDD" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_Keyboard" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_OS" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_ProductName" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_RAM" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_Screen" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_PriceList_VgaModels" ManuallyRouted="false" />
+        <AssociationConnector Association="CostPriceModel.FK_VgaModels_VGA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
